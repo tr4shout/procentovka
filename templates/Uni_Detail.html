@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/UniDetail.css' %}">
+    <meta charset="UTF-8">
+    <title>UniInfo</title>
+</head>
+<body>
+<center>
+
+  <img src = "{{object.image.url}}" alt="" width="500" height="300">
+  <h1> {{object.tittle}} </h1>
+  <p>{{show.description}}</p>
+  <p>{{object.category}}</p>
+   <p><a href="{{object.ref}}">{{object.ref}}</a></p>
+
+
+
+</center>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Uni1.css' static%}"/>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Rating Uni Of KR</title>
+</head>
+<body>
+<script>
+  AOS.init();
+</script>
+<!--<div class = "pos-but"><button class="button-css">Admin</button></div>-->
+	<form method="get">
+	{{myFilter.form}}
+	<button type="submit"> поиск</button>
+	</form>
+	{% for i in uni %}
+<div data-aos="zoom-out-up" class="size">
+	<ul class="tilesWrap">
+		<li>
+			<h2>{{i.number}}</h2>
+			<h3>{{i.tittle}}</h3>
+			<p>
+			{{i.title_ref}}
+			</p>
+			<form action="/Uni_Detail/{{i.id}}/"	 target="_blank">
+			<button>Read more</button>
+			</form>
+		</li>
+	</ul>
+			<a class="text1">{{i.description}}</a>
+
+</div>
+	{% endfor %}
+
+</ul>
+
+</body>
+</html>

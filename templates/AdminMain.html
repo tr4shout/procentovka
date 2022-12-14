@@ -15,13 +15,8 @@
 <script>
   AOS.init();
 </script>
-<div>
-	<form class="form" method="get">
-	{{myFilter.form}}
-	<button type="submit"> Search</button>
-	</form>
-	<button class="button-27" role="button"><a href="AdminMain" class="admin">Admin</a></button>
-	</div>
+<button><a href="/add_uni/">Добавить новый фильм</a></button>
+<button class="button-27" role="button"><a href="{% url 'logout' %}" class="admin">Logout</a></button>
 	{% for i in uni %}
 <div data-aos="zoom-out-up" class="size">
 	<ul class="tilesWrap">
@@ -44,4 +39,4 @@
 </ul>
 
 </body>
-</html>
+</html>>

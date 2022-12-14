@@ -7,12 +7,14 @@ from .models import Uni
 
 class UniFilter(django_filters.FilterSet):
     tittle = CharFilter(field_name="tittle", lookup_expr="icontains")
-    description = CharFilter(field_name="description", lookup_expr="icontains")
+
 
     class Meta:
         model = Uni
         fields = "__all__"
         exclude = [
+            "description",
+            "number",
             "image",
             "title_ref",
             "ref",

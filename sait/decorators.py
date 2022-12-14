@@ -1,8 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 
+
+
+
 # доступ только для админа (для редактирования моделей Университета)
-def allowed_users(allowed_roles=["admin"]):
+def allowed_users(allowed_roles=[]):
     def decorator(view_func):
         def wrapper_func(request, *args, **kwargs):
             group = None

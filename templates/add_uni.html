@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add tv show</title>
+</head>
+<body>
+<form action="/add_uni/" method="post" enctype="multipart/form-data">
+    <h1>Добавить новый фильм</h1>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="add">
+
+</form>
+
+</body>
+</html>

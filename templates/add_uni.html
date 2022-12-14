@@ -1,17 +1,43 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>add tv show</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Uni1.css' static%}"/>
 </head>
 <body>
+	<div class="container">
+		<div class="menu-button">Menu</div>
+		<ul class="flexnav" data-breakpoint="800">
+			</form>
+			<li><a href="">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contacts</a></li>
+					{% if request.user.is_staff %}
+					<li><a href="/add_uni/">Add Uni</a><li/>
+					{% endif %}
+					{% if request.user.is_anonymous %}
+					<button class="button-27" role="button"><a href="Login" class="admin">Admin</a></button>
+					{% endif %}
+					{% if request.user.is_staff %}
+					<button class="button-27" role="button"><a href="{% url 'logout' %}" class="admin">Logout</a></button>
+					{% endif %}
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+<center>
+    {% if request.user.is_staff %}
 <form action="/add_uni/" method="post" enctype="multipart/form-data">
-    <h1>Добавить новый фильм</h1>
+    <h1>                     .</h1>
+    <h1 class="addpos">Add New Uni</h1>
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="add">
-
+    {% endif %}
 </form>
-
+</center>
 </body>
 </html>

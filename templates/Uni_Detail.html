@@ -14,7 +14,10 @@
   <p>{{show.description}}</p>
   <p>{{object.category}}</p>
    <p><a href="{{object.ref}}">{{object.ref}}</a></p>
-
+{% if request.user.is_staff %}
+  <button class="button-31" role="button"><a href="/update_uni/{{object.id}}/update" class="text3">Edit Uni</a></button>
+  <button class="button-31" role="button"><a href="/delete_uni/{{object.id}}/delete" class = "text3">Delete Uni</a></button>
+{% endif %}
 
 
 </center>

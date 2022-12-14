@@ -42,6 +42,15 @@ class UniView(generic.DetailView):
         UniID = self.kwargs.get("id")
         return get_object_or_404(models.Uni, id=UniID)
 
+# просмотр полной информации о университете для Админа
+
+class UniViewAdmin(generic.DetailView):
+    template_name = "Uni_Detail_admin.html"
+
+    def get_object(self, **kwargs):
+        UniID = self.kwargs.get("id")
+        return get_object_or_404(models.Uni, id=UniID)
+
 
 # тестовый сервер
 def test(request):
@@ -49,8 +58,7 @@ def test(request):
 
 
 # Создание Университета
-@login_required(login_url='/login/')
-@allowed_users(allowed_roles=['admin'])
+
 class AddUni(generic.CreateView):
     template_name = "add_uni.html"
     form_class = forms.UniViewForm
@@ -63,8 +71,6 @@ class AddUni(generic.CreateView):
 
 
 # Изменение Информации Университета
-@login_required(login_url='/login/')
-@allowed_users(allowed_roles=['admin'])
 class UniUpdate(generic.UpdateView):
     template_name = "Uni_Update.html"
     form_class = forms.UniViewForm
@@ -79,8 +85,6 @@ class UniUpdate(generic.UpdateView):
 
 
 # Удаление Модели Университета
-@login_required(login_url='/login/')
-@allowed_users(allowed_roles=['admin'])
 class UniDelete(generic.DeleteView):
     template_name = "Uni_delete.html"
     success_url = "/Main/AdminMain"
@@ -98,7 +102,7 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('AdminMain')
+            return redirect('Main')
         else:
             messages.info(request, 'Username Or password is incorrect')
     context = {}
